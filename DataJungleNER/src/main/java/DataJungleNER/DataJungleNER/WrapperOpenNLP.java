@@ -89,7 +89,6 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
 
 	return location;
 	}
-
 	private LinkedList<String> getPersonName(String [] token) {
 		    NameFinderME namefinder=this.getNameFinder("traning"
 		    		+ "/en-ner-person.bin");
