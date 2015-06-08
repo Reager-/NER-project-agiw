@@ -19,4 +19,9 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 		return null;
 	}
 
+	public LinkedList<String> getEntities(String html) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

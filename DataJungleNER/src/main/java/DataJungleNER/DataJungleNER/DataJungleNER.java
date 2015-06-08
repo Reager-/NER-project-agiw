@@ -21,7 +21,7 @@ public class DataJungleNER
      String text = ArticleExtractor.INSTANCE.getText(doc.html());
      System.out.println(text);
      WrapperOpenNLP o=new WrapperOpenNLP();
-     for(String m:o.getOrganization(text)){
+     for(String m:o.getEntities(text)){
     	System.out.println(m); 
      }
     }
