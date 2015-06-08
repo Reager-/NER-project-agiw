@@ -11,16 +11,26 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import com.alchemyapi.api.AlchemyAPI;
 
 public class WrapperAlchemyAPI implements INamedEntityRecognition {
 	
 	private AlchemyAPI alchemyObj;
-	
+	private LinkedList<String> locations = new LinkedList<String>();
+
 	public WrapperAlchemyAPI(){
 		try {
 			setAlchemyObj(AlchemyAPI.GetInstanceFromFile("AlchemyAPI/api_key.txt"));
+			locations.add("City");
+			locations.add("Continent");
+			locations.add("Country");
+			locations.add("Region");
+			locations.add("StateOrCounty");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,6 +43,14 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 
 	public void setAlchemyObj(AlchemyAPI alchemyObj) {
 		this.alchemyObj = alchemyObj;
+	}
+	
+	public LinkedList<String> getLocations() {
+		return locations;
+	}
+
+	public void setLocations(LinkedList<String> locations) {
+		this.locations = locations;
 	}
 	
 	private static String getStringFromDocument(Document doc) {
@@ -59,13 +77,42 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 		LinkedList<String> result = new LinkedList<String>();
 		try {
 			doc = alchemyObj.TextGetRankedNamedEntities(html);
-			System.out.println(getStringFromDocument(doc));
+			result = formatOutput(doc);
+			// System.out.println(getStringFromDocument(doc)); print XML document
 			return result;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         return null;
+	}
+
+	private LinkedList<String> formatOutput(Document doc) {
+		NodeList entities = doc.getElementsByTagName("entity");
+		LinkedList<String> result = new LinkedList<String>();
+		for (int temp = 0; temp < entities.getLength(); temp++) {
+			 
+			Node nNode = entities.item(temp);
+	 
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+	 
+				Element eElement = (Element) nNode;
+				if (eElement.getElementsByTagName("type").item(0).getTextContent().equals("Company")){
+				result.add("organization,"+ eElement.getElementsByTagName("text").item(0).getTextContent());
+				}
+				if (eElement.getElementsByTagName("type").item(0).getTextContent().equals("Person")){
+					result.add("person,"+ eElement.getElementsByTagName("text").item(0).getTextContent());
+				}
+				if (isALocation(eElement.getElementsByTagName("type").item(0).getTextContent())){
+					result.add("location,"+ eElement.getElementsByTagName("text").item(0).getTextContent());
+				}
+			}
+		}
+		return result;
+	}
+
+	private boolean isALocation(String textContent){
+		return this.locations.contains(textContent);
 	}
 
 }

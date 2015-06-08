@@ -19,15 +19,14 @@ public class DataJungleNER
      String text = ArticleExtractor.INSTANCE.getText(doc.html());
      System.out.println(text);
      
-     /*WrapperOpenNLP o=new WrapperOpenNLP();
+     WrapperOpenNLP o=new WrapperOpenNLP();
      for(String m:o.getOrganization(text)){
     	System.out.println(m); 
      }
-     */
      
      System.out.println("Start AlchemyAPI:");
-     WrapperAlchemyAPI o=new WrapperAlchemyAPI();
-     for(String m:o.getEntities(text)){
+     WrapperAlchemyAPI a=new WrapperAlchemyAPI();
+     for(String m:a.getEntities(text)){
     	System.out.println(m); 
      }
      
