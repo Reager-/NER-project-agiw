@@ -86,4 +86,9 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
 		return null;
 	}
 
+	public LinkedList<String> getEntities(String htlm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
