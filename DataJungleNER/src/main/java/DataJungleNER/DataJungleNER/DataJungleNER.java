@@ -1,7 +1,6 @@
 package DataJungleNER.DataJungleNER;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.jsoup.Jsoup;
