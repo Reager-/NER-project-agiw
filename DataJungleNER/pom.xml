@@ -16,6 +16,11 @@
 
   <dependencies>
   <dependency>
+	<groupId>org.apache.opennlp</groupId>
+	<artifactId>opennlp-tools</artifactId>
+	<version>1.5.3</version>
+</dependency>
+  <dependency>
 	<groupId>com.syncthemall</groupId>
 	<artifactId>boilerpipe</artifactId>
 	<version>1.2.2</version>

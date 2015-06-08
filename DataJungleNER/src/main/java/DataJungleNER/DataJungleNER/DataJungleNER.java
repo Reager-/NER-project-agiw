@@ -21,5 +21,9 @@ public class DataJungleNER
      Document doc = Jsoup.connect("http://www.10news.com/newsy/apple-is-late-to-vr-and-ar-but-its-acquisitions-could-help").get();
      String text = ArticleExtractor.INSTANCE.getText(doc.html());
      System.out.println(text);
+     WrapperOpenNLP o=new WrapperOpenNLP();
+     for(String m:o.getOrganization(text)){
+    	System.out.println(m); 
+     }
     }
 }
