@@ -20,7 +20,7 @@ public class DataJungleNER
      System.out.println(text);
      
      WrapperOpenNLP o=new WrapperOpenNLP();
-     for(String m:o.getOrganization(text)){
+     for(String m:o.getEntities(text)){
     	System.out.println(m); 
      }
      
