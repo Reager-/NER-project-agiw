@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 public class MainClass {
 public static void main(String [] args) throws IOException{
 //il main prende la lista dei siti su cui fare le query e poi tramite extractor le fa 
-//	e invoca un writer che scriverà i vari url su un file
+//	e invoca un writer che scriverà i vari url su un file b
 
 	
 //String s = "http://index.commoncrawl.org/CC-MAIN-2015-06-index?url=10news.com%2F*&output=json" ;
