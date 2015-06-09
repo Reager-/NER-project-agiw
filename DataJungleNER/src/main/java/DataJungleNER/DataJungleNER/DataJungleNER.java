@@ -15,7 +15,7 @@ public class DataJungleNER
     {
      
      URL url = new URL("http://www.10news.com/newsy/apple-is-late-to-vr-and-ar-but-its-acquisitions-could-help");
-     Document doc = Jsoup.connect("http://www.ign.com/articles/2015/06/08/wolfenstein-the-old-blood-getting-physical-release-in-north-america").get();
+     Document doc = Jsoup.connect("http://www.transfermarkt.it/francesco-totti/profil/spieler/5958").get();
      String text = ArticleExtractor.INSTANCE.getText(doc.html());
      System.out.println(text);
      
