@@ -10,30 +10,42 @@ import java.util.List;
 
 public class UrlsWriter {
 private String pathfile;
-public UrlsWriter(String name){
+private BufferedWriter bw;
+//costruttore da modificare fa schifo cosi crea un metodo inizialize() privato chiamato nel costruttore
+//che restituisce un buffer
+public UrlsWriter(String name) {
 	this.pathfile=name;
-	
-}
-public void writeUrl(List<String> urls){
 	File fout = new File(this.pathfile);
 	FileOutputStream fos;
 	try {
 		fos = new FileOutputStream(fout);
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+		this.bw = new BufferedWriter(new OutputStreamWriter(fos));
+	} catch (FileNotFoundException e) {
+		e.printStackTrace();
+	}
+	
+}
+public void writeUrl(List<String> urls){
+	try {
 		 
 		for (String url:urls) {
+			System.out.println(url);
 			bw.write(url);
 			bw.newLine();
 		}
 	 
-		bw.close();
-	} catch (FileNotFoundException e) {
-		e.printStackTrace();
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
  
 	
 	
+}
+public void closeWriter(){
+	try {
+		this.bw.close();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
 }
 }
