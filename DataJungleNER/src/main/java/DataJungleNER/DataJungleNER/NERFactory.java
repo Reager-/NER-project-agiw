@@ -2,6 +2,9 @@ package DataJungleNER.DataJungleNER;
 
 public class NERFactory {
 	private static NERFactory istanza; 
+private NERFactory(){
+	
+}
 public static NERFactory getIstance(){
 
 	if(istanza==null)
