@@ -28,7 +28,7 @@ public static LinkedList<String> extractURLfromJson(String query){
 	} catch (MalformedURLException e) {
 		e.printStackTrace();
 	} catch (IOException e) {
-		e.printStackTrace();
+		System.out.println(" non è presente nell' indice di common-crawle");
 	}
 	return urls;
 	
