@@ -21,6 +21,7 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 	
 	private AlchemyAPI alchemyObj;
 	private LinkedList<String> locations = new LinkedList<String>();
+	private LinkedList<String> organizations = new LinkedList<String>();
 
 	public WrapperAlchemyAPI(){
 		try {
@@ -30,6 +31,10 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 			locations.add("Country");
 			locations.add("Region");
 			locations.add("StateOrCounty");
+			organizations.add("Company");
+			organizations.add("Organization");
+			organizations.add("RadioStation");
+			organizations.add("TelevisionStation");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -97,7 +102,7 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 	 
 				Element eElement = (Element) nNode;
-				if (eElement.getElementsByTagName("type").item(0).getTextContent().equals("Company")){
+				if (isAnOrganization(eElement.getElementsByTagName("type").item(0).getTextContent())){
 				result.add("organization,"+ eElement.getElementsByTagName("text").item(0).getTextContent());
 				}
 				if (eElement.getElementsByTagName("type").item(0).getTextContent().equals("Person")){
@@ -113,6 +118,10 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 
 	private boolean isALocation(String textContent){
 		return this.locations.contains(textContent);
+	}
+	
+	private boolean isAnOrganization(String textContent){
+		return this.organizations.contains(textContent);
 	}
 
 }

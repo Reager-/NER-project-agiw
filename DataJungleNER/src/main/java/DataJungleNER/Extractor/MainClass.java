@@ -9,9 +9,7 @@ public static void main(String [] args) throws IOException{
 	//il main prende la lista dei siti su cui fare le query e poi tramite extractor le fa 
 	//	e invoca un writer che scriverà i vari url su un file 
 	
-		
-	
-	UrlsWriter wr=new UrlsWriter("C:/Users/Eder/Downloads/NERUrlsExtracted/urls200.txt");
+	UrlsWriter wr=new UrlsWriter("target/urlsExtracted.txt");
 	
 	BufferedReader br = new BufferedReader(new FileReader("listofnews.txt"));
 	String line;
@@ -22,5 +20,7 @@ public static void main(String [] args) throws IOException{
 		wr.writeUrl(URLsExtractor.extractURLfromJson(baseUrl.replace("replace", line.trim())));
 	}
 	br.close();
-}
+	wr.closeWriter();
+
+	}
 }
