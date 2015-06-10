@@ -26,6 +26,5 @@ while ((line = br.readLine()) != null&&i<100) {
 	i++;
 	wr.writeUrl(URLsExtractor.extractURLfromJson(baseUrl.replace("replace", line.trim())));
 }
-
 }
 }
