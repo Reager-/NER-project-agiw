@@ -14,7 +14,7 @@ public class WrapperStanfordNLP implements INamedEntityRecognition{
 	public WrapperStanfordNLP(){
 		
 		try {
-			serializedClassifier = "traning/english.all.3class.nodistsim.crf.ser.gz";
+			serializedClassifier = "training/english.all.3class.nodistsim.crf.ser.gz";
 			classifier = CRFClassifier.getClassifier(serializedClassifier);
 		} catch (Exception e) {
 			System.out.println("Exception in WrapperStanfordNLP constructor");

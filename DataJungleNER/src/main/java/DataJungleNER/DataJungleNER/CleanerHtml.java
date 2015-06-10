@@ -2,6 +2,7 @@ package DataJungleNER.DataJungleNER;
 
 import java.io.IOException;
 
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -13,13 +14,14 @@ public static String getAndcleanhtml(String url){
 	Document doc;
 	String text="";
 	try {
-		doc = Jsoup.connect("http://www.10news.com/newsy/apple-is-late-to-vr-and-ar-but-its-acquisitions-could-help").get();
+		doc = Jsoup.connect(url).get();
 		text = ArticleExtractor.INSTANCE.getText(doc.html());
 	} catch (IOException e) {
-		e.printStackTrace();
+		System.out.println(url +" pagina offline");
 	}catch (BoilerpipeProcessingException e) {
 		e.printStackTrace();
 	}
+	
 	return text;
 }
 }
