@@ -15,6 +15,33 @@ import opennlp.tools.util.InvalidFormatException;
 import opennlp.tools.util.Span;
 
 public class WrapperOpenNLP implements INamedEntityRecognition{
+	private NameFinderME organiziationModel;
+	private NameFinderME personModel;
+	private NameFinderME locationModel;
+	private TokenizerME  tokenizerModel;
+	public WrapperOpenNLP(){
+		this.organiziationModel=this.getNameFinder("training/en-ner-organization.bin");
+		this.personModel=this.getNameFinder("training/en-ner-person.bin");
+		this.locationModel=this.getNameFinder("training/en-ner-location.bin");
+		this.tokenizerModel=this.getTokenizerModel("training/en-token.bin");
+		
+	} 
+	private TokenizerME getTokenizerModel(String dataTraining){
+		InputStream is;
+        TokenizerModel tm;
+		try {
+			is = new FileInputStream(dataTraining);
+			tm = new TokenizerModel(is);
+			return new TokenizerME(tm);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	private NameFinderME getNameFinder(String dataTraning){
 		InputStream is;
 		TokenNameFinderModel model;
@@ -36,22 +63,10 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
 
 	}
     private String[] tokenizer(String text){
-    	InputStream is;
-        TokenizerModel tm;
-            try {
-				is = new FileInputStream("traning/en-token.bin");
-				tm = new TokenizerModel(is);
-				Tokenizer tokenizer = new TokenizerME(tm);
-	            String [] tokens = tokenizer.tokenize(text);
-	            return tokens;
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}catch (InvalidFormatException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return null;
+            
+	            String [] tokens = this.tokenizerModel.tokenize(text);
+			
+			return tokens;
             
         
     }
@@ -61,8 +76,7 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
     	
     
 	private LinkedList<String> getOrganization(String []token) {
-		    NameFinderME nameFinder=this.getNameFinder("traning/en-ner-organization.bin");
-            Span sp[] = nameFinder.find(token);
+            Span sp[] =this.organiziationModel.find(token);
             String a[] = Span.spansToStrings(sp, token);
             LinkedList<String> org=new LinkedList<String>();
             for (int j = 0; j < a.length; j++) {
@@ -77,8 +91,7 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
 	}
 
 	private LinkedList<String> getLocation(String []token) {
-		NameFinderME namefinder=this.getNameFinder("traning/en-ner-location.bin");
-        Span sp[] = namefinder.find(token);
+        Span sp[] =this.locationModel.find(token) ;
         String a[] = Span.spansToStrings(sp, token);
         LinkedList<String> location=new LinkedList<String>();
         for (int j = 0; j < a.length; j++) {
@@ -90,9 +103,7 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
 	return location;
 	}
 	private LinkedList<String> getPersonName(String [] token) {
-		    NameFinderME namefinder=this.getNameFinder("traning"
-		    		+ "/en-ner-person.bin");
-            Span sp[] = namefinder.find(token);
+            Span sp[] =this.personModel.find(token) ;
             String a[] = Span.spansToStrings(sp, token);
             LinkedList<String> personName=new LinkedList<String>();
             for (int j = 0; j < a.length; j++) {

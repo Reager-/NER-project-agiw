@@ -1,6 +1,7 @@
 package DataJungleNER.DataJungleNER;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -14,20 +15,34 @@ import de.l3s.boilerpipe.extractors.ArticleExtractor;
 
 public class DataJungleNER 
 {
-    public static void main( String[] args ) throws BoilerpipeProcessingException, IOException
-    {
-    	CleanerHtml ch =new CleanerHtml();
-    	BufferedReader br = new BufferedReader(new FileReader("listofnews.txt"));
-    	String line;
-    	while ((line = br.readLine())!=null) {
-			String testo=ch.getAndcleanhtml(line);
-			NERFactory.getIstance().getOpenNLP().getEntities(testo);
-			
+    public static void main( String[] args ) {
+    	WriterEntities we=new WriterEntities("target/entità2.txt");
+    	BufferedReader br;
+    	
+		try {
+			br = new BufferedReader(new FileReader("target/prova.txt"));
+			String line;
+	    	INamedEntityRecognition ner=NERFactory.getIstance().getAlchemyAPI();
+	    	while ((line = br.readLine())!=null) {
+				String testo=CleanerHtml.getAndcleanhtml(line);
+				we.writeEntities(ner.getEntities(testo),line);
+				
+			}
+	    	we.closeWriter();
+	    	br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
     	
     	
     	
-     Document doc = Jsoup.connect("http://www.10news.com/newsy/apple-is-late-to-vr-and-ar-but-its-acquisitions-could-help").get();
+    	
+    	
+    	
+    	
+     /*Document doc = Jsoup.connect("http://www.10news.com/newsy/apple-is-late-to-vr-and-ar-but-its-acquisitions-could-help").get();
      String text = ArticleExtractor.INSTANCE.getText(doc.html());
      System.out.println(text);
      
@@ -41,7 +56,7 @@ public class DataJungleNER
      for(String m:a.getEntities(text)){
     	System.out.println(m); 
      }
-     
+     */
     }
     
 }
