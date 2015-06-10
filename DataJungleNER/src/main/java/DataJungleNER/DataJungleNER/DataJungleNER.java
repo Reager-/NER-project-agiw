@@ -4,14 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import DataJungleNER.Extractor.URLsExtractor;
-import de.l3s.boilerpipe.BoilerpipeProcessingException;
-import de.l3s.boilerpipe.extractors.ArticleExtractor;
 
 public class DataJungleNER 
 {
@@ -36,14 +28,9 @@ public class DataJungleNER
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+
      /*Document doc = Jsoup.connect("http://www.10news.com/newsy/apple-is-late-to-vr-and-ar-but-its-acquisitions-could-help").get();
+
      String text = ArticleExtractor.INSTANCE.getText(doc.html());
      System.out.println(text);
      
