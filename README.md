@@ -11,4 +11,4 @@ Output:
 pagine annotate
 
 Strumenti:
-AlchemiAPI, Apache OpenNLP, StanfordNLP
+AlchemyAPI, Apache OpenNLP, StanfordNLP
