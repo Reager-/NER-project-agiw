@@ -86,8 +86,9 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 			// System.out.println(getStringFromDocument(doc)); print XML document
 			return result;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+		
 		}
         return null;
 	}

@@ -24,7 +24,8 @@ public class DataJungleNER
 			String line;
 	    	INamedEntityRecognition ner=NERFactory.getIstance().getAlchemyAPI();
 	    	while ((line = br.readLine())!=null) {
-				String testo=CleanerHtml.getAndcleanhtml(line);
+				String testo=CleanerHtml.getAndCleanhtml(line);
+				if(testo!=null)
 				we.writeEntities(ner.getEntities(testo),line);
 				
 			}

@@ -22,6 +22,7 @@ public WriterEntities(String path){
 	
 }
 public void writeEntities(List<String> lista,String url){
+	if(lista!=null){
 	for(String ent:lista){
 		try {
 			this.bw.write(url+","+ent);
@@ -29,6 +30,7 @@ public void writeEntities(List<String> lista,String url){
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
 		
 	}
 	
