@@ -9,8 +9,8 @@ import org.jsoup.nodes.Document;
 import de.l3s.boilerpipe.BoilerpipeProcessingException;
 import de.l3s.boilerpipe.extractors.ArticleExtractor;
 
-public class CleanerHtml {
-public static String getAndCleanhtml(String url){
+public class HtmlCleaner {
+public static String getAndCleanHtml(String url){
 	Document doc;
 	String text="";
 	try {

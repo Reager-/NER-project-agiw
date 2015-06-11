@@ -116,7 +116,7 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
 	}
 	
 	
-	public LinkedList<String> getEntities(String html) {
+	public synchronized LinkedList<String> getEntities(String html) {
 		LinkedList<String> entities=new LinkedList<String>();
 		String []token =this.tokenizer(html);
 		entities.addAll(this.getOrganization(token));
