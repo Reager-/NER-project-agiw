@@ -14,8 +14,11 @@ public class DataJungleNER
 		try {
 			br = new BufferedReader(new FileReader("target/prova.txt"));
 			String line;
-	    	INamedEntityRecognition ner=NERFactory.getIstance().getAlchemyAPI();
+	    	INamedEntityRecognition ner=NERFactory.getIstance().getOpenNLP();
+	    	int pageCounter = 1;
 	    	while ((line = br.readLine())!=null) {
+	    		System.out.println(pageCounter);
+	    		pageCounter++;
 				String testo=CleanerHtml.getAndcleanhtml(line);
 				we.writeEntities(ner.getEntities(testo),line);
 				

@@ -24,8 +24,7 @@ public class WrapperStanfordNLP implements INamedEntityRecognition{
 	public LinkedList<String> getEntities(String html) {
 		
 		LinkedList<String> result = new LinkedList<String>();
-		this.classifier.classifyToString(html, "xml", true);
-		 
+		this.classifier.classifyToString(html, "xml", true); //http://stackoverflow.com/questions/28975890/stanford-ner-running
 		return result;
 	}
 	

@@ -10,6 +10,7 @@ import java.util.List;
 
 public class WriterEntities {
 	private BufferedWriter bw;
+	
 public WriterEntities(String path){
 	File fout = new File(path);
 	FileOutputStream fos;
