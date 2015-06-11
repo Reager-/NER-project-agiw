@@ -25,7 +25,7 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 
 	public WrapperAlchemyAPI(){
 		try {
-			setAlchemyObj(AlchemyAPI.GetInstanceFromFile("AlchemyAPI/api_key.txt"));
+			setAlchemyObj(AlchemyAPI.GetInstanceFromFile("target/api_key.txt"));
 			locations.add("City");
 			locations.add("Continent");
 			locations.add("Country");
@@ -86,8 +86,9 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 			// System.out.println(getStringFromDocument(doc)); print XML document
 			return result;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+		
 		}
         return null;
 	}

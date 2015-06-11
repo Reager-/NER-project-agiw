@@ -9,8 +9,8 @@ import org.jsoup.nodes.Document;
 import de.l3s.boilerpipe.BoilerpipeProcessingException;
 import de.l3s.boilerpipe.extractors.ArticleExtractor;
 
-public class CleanerHtml {
-public static String getAndcleanhtml(String url){
+public class HtmlCleaner {
+public static String getAndCleanHtml(String url){
 	Document doc;
 	String text="";
 	try {
@@ -18,6 +18,7 @@ public static String getAndcleanhtml(String url){
 		text = ArticleExtractor.INSTANCE.getText(doc.html());
 	} catch (IOException e) {
 		System.out.println(url +" pagina offline");
+		return null;
 	}catch (BoilerpipeProcessingException e) {
 		e.printStackTrace();
 	}
