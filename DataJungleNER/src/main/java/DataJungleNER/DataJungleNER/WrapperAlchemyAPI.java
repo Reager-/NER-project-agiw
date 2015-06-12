@@ -77,7 +77,7 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
         }
     }
 
-	public LinkedList<String> getEntities(String html) {
+	public synchronized LinkedList<String> getEntities(String html) {
 		Document doc;
 		LinkedList<String> result = new LinkedList<String>();
 		try {
