@@ -22,6 +22,7 @@ public WriterEntities(String path){
 	}
 	
 }
+/*METODO ORIGINALE
 public void writeEntities(List<String> lista,String url){
 	if(lista!=null){
 	for(String ent:lista){
@@ -35,7 +36,30 @@ public void writeEntities(List<String> lista,String url){
 		
 	}
 	
+}*/
+//METODO SCRIVE TUTTO IN UNA RIGA
+public void writeEntities(List<String> lista,String url) throws IOException {
+	if(lista!=null){
+		
+			this.bw.write(url);
+		
+	for(String ent:lista){
+		try {
+			this.bw.write("::"+ent);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	try {
+		bw.newLine();
+	} catch (IOException e) {
+		
+		e.printStackTrace();
+	}	
+	}
+	
 }
+
 public void closeWriter(){
 	try {
 		this.bw.close();

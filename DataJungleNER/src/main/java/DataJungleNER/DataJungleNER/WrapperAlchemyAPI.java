@@ -83,7 +83,7 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 		try {
 			doc = alchemyObj.TextGetRankedNamedEntities(html);
 			result = formatOutput(doc);
-			// System.out.println(getStringFromDocument(doc)); print XML document
+			//System.out.println(getStringFromDocument(doc)); //print XML document
 			return result;
 		} catch (Exception e) {
 			
@@ -96,6 +96,12 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 	private LinkedList<String> formatOutput(Document doc) {
 		NodeList entities = doc.getElementsByTagName("entity");
 		LinkedList<String> result = new LinkedList<String>();
+		LinkedList<String> organizationEntities = new LinkedList<String>();
+		organizationEntities.add("ORGANIZATION");
+		LinkedList<String> personEntities = new LinkedList<String>();
+		personEntities.add("PERSON");
+		LinkedList<String> locationEntities = new LinkedList<String>();
+		locationEntities.add("LOCATION");
 		for (int temp = 0; temp < entities.getLength(); temp++) {
 			 
 			Node nNode = entities.item(temp);
@@ -104,16 +110,20 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 	 
 				Element eElement = (Element) nNode;
 				if (isAnOrganization(eElement.getElementsByTagName("type").item(0).getTextContent())){
-				result.add("organization,"+ eElement.getElementsByTagName("text").item(0).getTextContent());
+					organizationEntities.add(eElement.getElementsByTagName("text").item(0).getTextContent());
 				}
 				if (eElement.getElementsByTagName("type").item(0).getTextContent().equals("Person")){
-					result.add("person,"+ eElement.getElementsByTagName("text").item(0).getTextContent());
+					personEntities.add(eElement.getElementsByTagName("text").item(0).getTextContent());
 				}
 				if (isALocation(eElement.getElementsByTagName("type").item(0).getTextContent())){
-					result.add("location,"+ eElement.getElementsByTagName("text").item(0).getTextContent());
+					locationEntities.add(eElement.getElementsByTagName("text").item(0).getTextContent());
 				}
 			}
 		}
+		result.addAll(organizationEntities);
+		result.addAll(personEntities);
+		result.addAll(locationEntities);
+		
 		return result;
 	}
 
