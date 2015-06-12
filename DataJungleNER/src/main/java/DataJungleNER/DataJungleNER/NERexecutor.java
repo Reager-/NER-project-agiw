@@ -30,6 +30,7 @@ public class NERexecutor {
 			br = new BufferedReader(new FileReader(this.urls));
 			String line;
 	    	INamedEntityRecognition ner=NERFactory.getIstance().getNLPlibrary();
+
 	    	while ((line = br.readLine())!=null) {
 	    		pool.submit(new TaskNER(we, line, ner));
 				
