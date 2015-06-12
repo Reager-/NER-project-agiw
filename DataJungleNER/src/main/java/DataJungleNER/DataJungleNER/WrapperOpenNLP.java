@@ -117,6 +117,9 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
 
 	return location;
 	}
+
+	//modifica questa in modo tale che appena crei lista fai add("person") e poi nel for aggiungi solo il nome
+	//delle entità
 	*/
 	private LinkedList<String> getLocation(String []token) {
         Span sp[] =this.locationModel.find(token) ;
