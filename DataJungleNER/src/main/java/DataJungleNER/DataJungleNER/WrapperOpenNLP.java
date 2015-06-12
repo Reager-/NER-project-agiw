@@ -75,7 +75,7 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
     	
     	
     
-	private LinkedList<String> getOrganization(String []token) {
+	/*private LinkedList<String> getOrganization(String []token) {
             Span sp[] =this.organiziationModel.find(token);
             String a[] = Span.spansToStrings(sp, token);
             LinkedList<String> org=new LinkedList<String>();
@@ -88,8 +88,23 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
             }
             return org;
 		
-	}
+	}*/
+	private LinkedList<String> getOrganization(String []token) {
+        Span sp[] =this.organiziationModel.find(token);
+        String a[] = Span.spansToStrings(sp, token);
+        LinkedList<String> org=new LinkedList<String>();
+        org.add("ORGANIZATION");
+        for (int j = 0; j < a.length; j++) {
+        	String entity=a[j];
+        	if(!org.contains(entity)){
+            org.add(entity);
+        	}
 
+        }
+        return org;
+	
+}
+/*
 	private LinkedList<String> getLocation(String []token) {
         Span sp[] =this.locationModel.find(token) ;
         String a[] = Span.spansToStrings(sp, token);
@@ -102,7 +117,21 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
 
 	return location;
 	}
-	private LinkedList<String> getPersonName(String [] token) {
+	*/
+	private LinkedList<String> getLocation(String []token) {
+        Span sp[] =this.locationModel.find(token) ;
+        String a[] = Span.spansToStrings(sp, token);
+        LinkedList<String> location=new LinkedList<String>();
+        location.add("LOCATION");
+        for (int j = 0; j < a.length; j++) {
+        	String entity=a[j];
+        	if(!location.contains(entity))
+            location.add(entity);
+        	}
+
+	return location;
+	}
+	/*private LinkedList<String> getPersonName(String [] token) {
             Span sp[] =this.personModel.find(token) ;
             String a[] = Span.spansToStrings(sp, token);
             LinkedList<String> personName=new LinkedList<String>();
@@ -113,7 +142,20 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
             	}
 
 		return personName;
-	}
+	}*/
+	private LinkedList<String> getPersonName(String [] token) {
+        Span sp[] =this.personModel.find(token) ;
+        String a[] = Span.spansToStrings(sp, token);
+        LinkedList<String> personName=new LinkedList<String>();
+        personName.add("PERSON");
+        for (int j = 0; j < a.length; j++) {
+        	String entity=a[j];
+        	if(!personName.contains(entity))
+            personName.add(entity);
+        	}
+
+	return personName;
+}
 	
 	
 	public synchronized LinkedList<String> getEntities(String html) {

@@ -11,7 +11,7 @@ public class MainClass {
 
 
 
-		UrlsWriter wr=new UrlsWriter("target/urls10.txt");
+		UrlsWriter wr=new UrlsWriter("C:/Users/Daniel/Desktop/pagineJson/url400.txt");
 
 		BufferedReader br = new BufferedReader(new FileReader("listofnews.txt"));
 		String line;

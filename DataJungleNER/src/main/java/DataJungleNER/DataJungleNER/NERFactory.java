@@ -19,4 +19,8 @@ public INamedEntityRecognition getAlchemyAPI(){
 	INamedEntityRecognition o=new WrapperAlchemyAPI();
 	return o;
 	}
+public INamedEntityRecognition getStanfordNLP(){
+	INamedEntityRecognition o=new WrapperStanfordNLP();
+	return o;
+	}
 }
