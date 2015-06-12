@@ -17,7 +17,7 @@ public class MainClass {
 		String line;
 		String baseUrl = "http://index.commoncrawl.org/CC-MAIN-2015-06-index?url=replace%2F*&output=json" ;
 		int i=0;
-		while ((line = br.readLine()) != null&&i<1) {
+		while ((line = br.readLine()) != null&&i<400) {
 			i++;
 			wr.writeUrl(URLsExtractor.extractURLfromJson(baseUrl.replace("replace", line.trim())));
 		}
