@@ -38,9 +38,11 @@ public void writeEntities(List<String> lista,String url){
 	
 }*/
 //METODO SCRIVE TUTTO IN UNA RIGA
-public void writeEntities(List<String> lista,String url) throws IOException{
+public void writeEntities(List<String> lista,String url) throws IOException {
 	if(lista!=null){
-		this.bw.write(url);
+		
+			this.bw.write(url);
+		
 	for(String ent:lista){
 		try {
 			this.bw.write("::"+ent);
@@ -48,7 +50,12 @@ public void writeEntities(List<String> lista,String url) throws IOException{
 			e.printStackTrace();
 		}
 	}
-	bw.newLine();	
+	try {
+		bw.newLine();
+	} catch (IOException e) {
+		
+		e.printStackTrace();
+	}	
 	}
 	
 }

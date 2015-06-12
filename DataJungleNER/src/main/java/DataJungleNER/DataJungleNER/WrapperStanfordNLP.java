@@ -23,22 +23,19 @@ public class WrapperStanfordNLP implements INamedEntityRecognition{
 			System.out.println("Exception in WrapperStanfordNLP constructor");
 		}
 	}
-    
+	
 
-    private	LinkedList<String> getAll(String output){
+    private	LinkedList<String> getTypeEntitie(String output,String type){
     	LinkedList<String> l = new LinkedList<String>();
-    	l.add("LOCATION");
-    	String[] r1=Jsoup.parse(output).getElementsByTag("LOCATION").html().split("/n");
-    	if(!r1[0].equals(""))
-    		l.addAll(Arrays.asList(r1));
-    	l.add("ORGANIZATION");
-    	String[] r2=Jsoup.parse(output).getElementsByTag("ORGANIZATION").html().split("/n");
-    	if(!r2[0].equals(""))
-    		l.addAll(Arrays.asList(r2));
-    	l.add("PERSON");
-    	String[] r3=Jsoup.parse(output).getElementsByTag("PERSON").html().split("/n");
-    	if(!r3[0].equals(""))
-    		l.addAll(Arrays.asList(r3));
+    	l.add(type);
+    	String[] r1=Jsoup.parse(output).getElementsByTag(type).html().replaceAll("\\r|\\n", "#").split("#");
+    	if(!r1[0].equals("")){
+    		for(String s:r1){
+    			if(!l.contains(s))
+    				l.add(s);
+    		}
+    		      
+    	}
     	
     	return l;
     	
@@ -46,17 +43,14 @@ public class WrapperStanfordNLP implements INamedEntityRecognition{
     
 	public LinkedList<String> getEntities(String html) {
 		
-	
+		LinkedList<String> result = new LinkedList<String>();
 		String output=this.classifier.classifyToString(html, "inlineXML", true); 
-		
-		return this.getAll(output);
+	    result.addAll(this.getTypeEntitie(output, "LOCATION"));
+	    result.addAll(this.getTypeEntitie(output, "PERSON"));
+	    result.addAll(this.getTypeEntitie(output, "ORGANIZATION"));
+		return result;
 	}
-	//da cancellare
-public String getEntitiesss(String html) {
-		
-		
-		 //http://stackoverflow.com/questions/28975890/stanford-ner-running
-		return this.classifier.classifyToString(html, "inlineXML", true);
-	}
+	
+
 	
 }
