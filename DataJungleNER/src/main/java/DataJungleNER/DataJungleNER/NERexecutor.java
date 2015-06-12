@@ -29,7 +29,7 @@ public class NERexecutor {
 		try {
 			br = new BufferedReader(new FileReader(this.urls));
 			String line;
-	    	INamedEntityRecognition ner=NERFactory.getIstance().getStanfordNLP();
+	    	INamedEntityRecognition ner=NERFactory.getIstance().getAlchemyAPI();
 	    	while ((line = br.readLine())!=null) {
 	    		pool.submit(new TaskNER(we, line, ner));
 				

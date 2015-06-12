@@ -1,17 +1,12 @@
 package DataJungleNER.DataJungleNER;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import edu.stanford.nlp.ie.AbstractSequenceClassifier;
 import edu.stanford.nlp.ie.NERClassifierCombiner;
-import edu.stanford.nlp.ie.crf.*;
-import edu.stanford.nlp.ling.CoreLabel;
 
 public class WrapperStanfordNLP implements INamedEntityRecognition{
 	
