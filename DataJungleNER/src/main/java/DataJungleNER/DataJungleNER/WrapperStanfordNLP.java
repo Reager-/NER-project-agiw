@@ -6,20 +6,22 @@ import java.util.LinkedList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
-import edu.stanford.nlp.ie.NERClassifierCombiner;
+import edu.stanford.nlp.ie.AbstractSequenceClassifier;
+import edu.stanford.nlp.ie.crf.CRFClassifier;
+import edu.stanford.nlp.ling.CoreLabel;
 
 public class WrapperStanfordNLP implements INamedEntityRecognition{
 	
 	private String serializedClassifier;
-	//private AbstractSequenceClassifier<CoreLabel> classifier;
-	private NERClassifierCombiner classifier;
+	private AbstractSequenceClassifier<CoreLabel> classifier;
+	//private NERClassifierCombiner classifier;
 	
 	public WrapperStanfordNLP(){
 		
 		try {
 			serializedClassifier = "training/english.all.3class.nodistsim.crf.ser.gz";
-			//classifier = CRFClassifier.getClassifier(serializedClassifier);
-			classifier = new NERClassifierCombiner(false, false, serializedClassifier);
+			classifier = CRFClassifier.getClassifier(serializedClassifier);
+			//classifier = new NERClassifierCombiner(false, false, serializedClassifier);
 		} catch (Exception e) {
 			System.out.println("Exception in WrapperStanfordNLP constructor");
 		}

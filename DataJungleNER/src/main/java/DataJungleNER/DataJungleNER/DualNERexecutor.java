@@ -38,6 +38,7 @@ public class DualNERexecutor {
 		    	pool.shutdown();
 		    	pool.awaitTermination(600000, TimeUnit.SECONDS);
 		    	we1.closeWriter();
+		    	we2.closeWriter();
 		    	br.close();
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();

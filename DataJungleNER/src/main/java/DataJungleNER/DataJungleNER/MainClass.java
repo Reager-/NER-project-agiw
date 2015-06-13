@@ -1,15 +1,5 @@
 package DataJungleNER.DataJungleNER;
 
-
-
-
-
-
-
-
-
-
-
 public class MainClass {
 	public static void main(String [] args){
 		PropertiesManager p=new PropertiesManager();
@@ -26,9 +16,7 @@ public class MainClass {
 
 		//NERexecutorSeriale e=new NERexecutorSeriale("target/prova.txt","target/entitàSeriale.txt");
 
-		//e.exec();
-		
-		
+		//e.exec();		
 
 
 	}
