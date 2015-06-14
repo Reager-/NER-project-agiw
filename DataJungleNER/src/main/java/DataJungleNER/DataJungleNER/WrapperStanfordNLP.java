@@ -19,7 +19,7 @@ public class WrapperStanfordNLP implements INamedEntityRecognition{
 	public WrapperStanfordNLP(){
 		
 		try {
-			serializedClassifier = "training/english.all.3class.nodistsim.crf.ser.gz";
+			serializedClassifier = "training/english.all.3class.distsim.crf.ser.gz";
 			classifier = CRFClassifier.getClassifier(serializedClassifier);
 			//classifier = new NERClassifierCombiner(false, false, serializedClassifier);
 		} catch (Exception e) {
