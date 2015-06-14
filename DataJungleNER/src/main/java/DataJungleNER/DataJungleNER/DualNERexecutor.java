@@ -33,10 +33,7 @@ public class DualNERexecutor {
 		    	double counter = 0; // how many pages have been analyzed
 		    	while ((line = br.readLine())!=null) {
 		    		counter++;
-		    		if (counter%10==0)
-		    			System.out.println(counter);
-		    		pool.submit(new DualTaskNER(we1,we2, line, ner1,ner2));
-					
+		    		pool.submit(new DualTaskNER(we1,we2, line, ner1,ner2, counter));
 				}
 		    	pool.shutdown();
 		    	pool.awaitTermination(600000, TimeUnit.SECONDS);

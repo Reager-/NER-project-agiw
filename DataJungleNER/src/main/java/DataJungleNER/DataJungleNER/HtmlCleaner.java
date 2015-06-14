@@ -2,7 +2,6 @@ package DataJungleNER.DataJungleNER;
 
 import java.io.IOException;
 
-import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -17,7 +16,7 @@ public static String getAndCleanHtml(String url){
 		doc = Jsoup.connect(url).get();
 		text = ArticleExtractor.INSTANCE.getText(doc.html());
 	} catch (IOException e) {
-		System.out.println(url +" pagina offline");
+		//System.out.println(url +" pagina offline");
 		return null;
 	}catch (BoilerpipeProcessingException e) {
 		e.printStackTrace();

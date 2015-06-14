@@ -31,8 +31,11 @@ public class NERexecutor {
 			String line;
 
 	    	INamedEntityRecognition ner=NERFactory.getIstance().getNLPlibrary();
+	    	double counter = 0; // how many pages have been analyzed
+	    	
 	    	while ((line = br.readLine())!=null) {
-	    		pool.submit(new TaskNER(we, line, ner));
+	    		counter++;
+	    		pool.submit(new TaskNER(we, line, ner, counter));
 				
 			}
 	    	pool.shutdown();

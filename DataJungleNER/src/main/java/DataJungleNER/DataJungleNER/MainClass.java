@@ -17,8 +17,6 @@ public class MainClass {
 		//NERexecutorSeriale e=new NERexecutorSeriale("target/prova.txt","target/entitàSeriale.txt");
 
 		//e.exec();		
-
-
 	}
 	
 
