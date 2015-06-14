@@ -30,8 +30,11 @@ public class DualNERexecutor {
 				String line;
 		    	INamedEntityRecognition ner1=NERFactory.getIstance().getOpenNLP();
 		    	INamedEntityRecognition ner2=NERFactory.getIstance().getStanfordNLP();
-
+		    	double counter = 0; // how many pages have been analyzed
 		    	while ((line = br.readLine())!=null) {
+		    		counter++;
+		    		if (counter%10==0)
+		    			System.out.println(counter);
 		    		pool.submit(new DualTaskNER(we1,we2, line, ner1,ner2));
 					
 				}
