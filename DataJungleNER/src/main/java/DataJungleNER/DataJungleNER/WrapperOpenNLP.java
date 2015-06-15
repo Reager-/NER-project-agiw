@@ -93,11 +93,10 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
         Span sp[] =this.organiziationModel.find(token);
         String a[] = Span.spansToStrings(sp, token);
         LinkedList<String> org=new LinkedList<String>();
-        org.add("ORGANIZATION");
         for (int j = 0; j < a.length; j++) {
         	String entity=a[j];
-        	if(!org.contains(entity)){
-            org.add(entity);
+        	if(!org.contains("(O)"+entity)){
+            org.add("(O)"+entity);
         	}
 
         }
@@ -125,11 +124,10 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
         Span sp[] =this.locationModel.find(token) ;
         String a[] = Span.spansToStrings(sp, token);
         LinkedList<String> location=new LinkedList<String>();
-        location.add("LOCATION");
         for (int j = 0; j < a.length; j++) {
         	String entity=a[j];
-        	if(!location.contains(entity))
-            location.add(entity);
+        	if(!location.contains("(L)"+entity))
+            location.add("(L)"+entity);
         	}
 
 	return location;
@@ -150,11 +148,10 @@ public class WrapperOpenNLP implements INamedEntityRecognition{
         Span sp[] =this.personModel.find(token) ;
         String a[] = Span.spansToStrings(sp, token);
         LinkedList<String> personName=new LinkedList<String>();
-        personName.add("PERSON");
         for (int j = 0; j < a.length; j++) {
         	String entity=a[j];
-        	if(!personName.contains(entity))
-            personName.add(entity);
+        	if(!personName.contains("(P)"+entity))
+            personName.add("(P)"+entity);
         	}
 
 	return personName;

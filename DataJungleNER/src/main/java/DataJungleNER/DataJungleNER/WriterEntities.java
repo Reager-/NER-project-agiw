@@ -2,7 +2,6 @@ package DataJungleNER.DataJungleNER;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -16,8 +15,8 @@ public WriterEntities(String path){
 	FileOutputStream fos;
 	try {
 		fos = new FileOutputStream(fout);
-		this.bw = new BufferedWriter(new OutputStreamWriter(fos));
-	} catch (FileNotFoundException e) {
+		this.bw = new BufferedWriter(new OutputStreamWriter((fos), "UTF-8"));
+	} catch (Exception e) {
 		e.printStackTrace();
 	}
 	
