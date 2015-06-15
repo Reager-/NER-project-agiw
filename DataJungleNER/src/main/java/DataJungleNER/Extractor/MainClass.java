@@ -11,7 +11,7 @@ public class MainClass {
 
 
 
-		UrlsWriter wr=new UrlsWriter("C:/Users/Eder/git/NER-project-agiw/DataJungleNER/target/pagine-247wallst.txt");
+		UrlsWriter wr=new UrlsWriter("C:/Users/Eder/git/NER-project-agiw/DataJungleNER/target/pagine-aljazeera.txt");
 
 		BufferedReader br = new BufferedReader(new FileReader("listofnews.txt"));
 		String line;

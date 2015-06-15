@@ -42,28 +42,25 @@ public class WrapperStanfordNLP implements INamedEntityRecognition{
 */
     private	LinkedList<String> getAll(String output){
     	LinkedList<String> result = new LinkedList<String>();
-    	result.add("ORGANIZATION");
     	Iterator<Element> it = Jsoup.parse(output).getElementsByTag("ORGANIZATION").iterator();
     	while (it.hasNext()){
     		String entity = it.next().text();
-    		if (!result.contains(entity)){
-    			result.add(entity);
+    		if (!result.contains("(O)"+entity)){
+    			result.add("(O)"+entity);
     		}
     	}
-    	result.add("PERSON");
     	Iterator<Element> it2 = Jsoup.parse(output).getElementsByTag("PERSON").iterator();
     	while (it2.hasNext()){
-    		String entity =it2.next().text();
-    		if (!result.contains(entity)){
-    			result.add(entity);
+    		String entity = it2.next().text();
+    		if (!result.contains("(P)"+entity)){
+    			result.add("(P)"+entity);
     		}
     	}
-    	result.add("LOCATION");
     	Iterator<Element> it3 = Jsoup.parse(output).getElementsByTag("LOCATION").iterator();
     	while (it3.hasNext()){
     		String entity = it3.next().text();
-    		if (!result.contains(entity)){
-    			result.add(entity);
+    		if (!result.contains("(L)"+entity)){
+    			result.add("(L)"+entity);
     		}
     	}
     	
