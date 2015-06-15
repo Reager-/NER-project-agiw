@@ -53,7 +53,7 @@ public class WrapperStanfordNLP implements INamedEntityRecognition{
     	result.add("PERSON");
     	Iterator<Element> it2 = Jsoup.parse(output).getElementsByTag("PERSON").iterator();
     	while (it2.hasNext()){
-    		String entity = it2.next().text();
+    		String entity =it2.next().text();
     		if (!result.contains(entity)){
     			result.add(entity);
     		}
