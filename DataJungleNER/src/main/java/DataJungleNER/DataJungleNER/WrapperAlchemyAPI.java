@@ -58,6 +58,7 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 		this.locations = locations;
 	}
 	
+	@SuppressWarnings("unused")
 	private static String getStringFromDocument(Document doc) {
         try {
             DOMSource domSource = new DOMSource(doc);
@@ -97,11 +98,8 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 		NodeList entities = doc.getElementsByTagName("entity");
 		LinkedList<String> result = new LinkedList<String>();
 		LinkedList<String> organizationEntities = new LinkedList<String>();
-		organizationEntities.add("ORGANIZATION");
 		LinkedList<String> personEntities = new LinkedList<String>();
-		personEntities.add("PERSON");
 		LinkedList<String> locationEntities = new LinkedList<String>();
-		locationEntities.add("LOCATION");
 		for (int temp = 0; temp < entities.getLength(); temp++) {
 			 
 			Node nNode = entities.item(temp);
@@ -110,13 +108,13 @@ public class WrapperAlchemyAPI implements INamedEntityRecognition {
 	 
 				Element eElement = (Element) nNode;
 				if (isAnOrganization(eElement.getElementsByTagName("type").item(0).getTextContent())){
-					organizationEntities.add(eElement.getElementsByTagName("text").item(0).getTextContent());
+					organizationEntities.add("(O)"+eElement.getElementsByTagName("text").item(0).getTextContent());
 				}
 				if (eElement.getElementsByTagName("type").item(0).getTextContent().equals("Person")){
-					personEntities.add(eElement.getElementsByTagName("text").item(0).getTextContent());
+					personEntities.add("(P)"+eElement.getElementsByTagName("text").item(0).getTextContent());
 				}
 				if (isALocation(eElement.getElementsByTagName("type").item(0).getTextContent())){
-					locationEntities.add(eElement.getElementsByTagName("text").item(0).getTextContent());
+					locationEntities.add("(L)"+eElement.getElementsByTagName("text").item(0).getTextContent());
 				}
 			}
 		}

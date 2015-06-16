@@ -11,14 +11,13 @@ public class MainClass {
 
 
 
-		UrlsWriter wr=new UrlsWriter("C:/Users/Eder/git/NER-project-agiw/DataJungleNER/target/pagine-aljazeera.txt");
+		UrlsWriter wr=new UrlsWriter("C:/Users/Eder/git/NER-project-agiw/DataJungleNER/target/pagine-bloomberg-whitehouse.txt");
 
 		BufferedReader br = new BufferedReader(new FileReader("listofnews.txt"));
 		String line;
 		String baseUrl = "http://index.commoncrawl.org/CC-MAIN-2015-06-index?url=replace%2F*&output=json" ;
-		int i=0;
+		
 		while ((line = br.readLine()) != null) {
-			i++;
 			wr.writeUrl(URLsExtractor.extractURLfromJson(baseUrl.replace("replace", line.trim())));
 		}
 		br.close();
