@@ -1,4 +1,4 @@
-package DataJungleNER.Apriori;
+package DataJungleNER.hadoop.apriori;
 
 import java.io.IOException;
 import java.util.LinkedList;

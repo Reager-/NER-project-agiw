@@ -1,4 +1,4 @@
-package DataJungleNER.Apriori;
+package DataJungleNER.hadoop.apriori;
 
 import java.io.DataInput;
 import java.io.DataOutput;
