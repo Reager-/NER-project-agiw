@@ -38,7 +38,6 @@ public class Apriori extends Configured implements Tool {
 	    job1.setJarByClass(Apriori.class);
 	    job1.setMapperClass(CountEntitiesMapper1.class);
 	    job1.setReducerClass(CountEntitiesReducer1.class);
-	    job1.setCombinerClass(CountEntitiesReducer1.class);
 	    job1.setInputFormatClass(TextInputFormat.class);
 	    job1.setMapOutputKeyClass(Text.class);
 	    job1.setMapOutputValueClass(IntWritable.class);

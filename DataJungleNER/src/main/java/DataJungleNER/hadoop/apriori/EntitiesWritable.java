@@ -34,9 +34,28 @@ public class EntitiesWritable implements WritableComparable<EntitiesWritable> {
       out.writeUTF(this.nomeCoppia.toString());	
       out.writeInt(this.quantita.get());
 	}
+	
+	@Override
+    public String toString() {
+        return this.nomeCoppia.toString() + " " + this.quantita.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.nomeCoppia.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof EntitiesWritable) {
+        	EntitiesWritable secondPair = (EntitiesWritable) o;
+            return this.nomeCoppia.toString().equals(secondPair.getNomeCoppia().toString());
+        }  
+        return false;
+    }
 
 	public int compareTo(EntitiesWritable o) {
-		return 0;
+		return this.nomeCoppia.compareTo(o.getNomeCoppia());
 	}
 
 	public Text getNomeCoppia() {
