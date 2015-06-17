@@ -4,14 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class MainClass {
+public class ExtractorMain {
 	public static void main(String [] args) throws IOException{
 		//il main prende la lista dei siti su cui fare le query e poi tramite extractor le fa 
 		//	e invoca un writer che scriverà i vari url su un file 
 
-
-
-		UrlsWriter wr=new UrlsWriter("C:/Users/Eder/git/NER-project-agiw/DataJungleNER/target/pagine-nytimes.txt");
+		UrlsWriter wr=new UrlsWriter("C:/Users/Eder/git/NER-project-agiw/DataJungleNER/target/pagine-zmescience.txt");
 
 		BufferedReader br = new BufferedReader(new FileReader("listofnews.txt"));
 		String line;
