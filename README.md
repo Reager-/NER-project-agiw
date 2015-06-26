@@ -1,14 +1,14 @@
 # NER-project-agiw
-Progetto per il corso di Analisi e Gestione Informazioni su Web (https://sites.google.com/site/roma3agiw/), Università degli Studi Roma Tre
+Named Entity Recognition project for the Web Information Management course at Università degli Studi Roma Tre (https://sites.google.com/site/roma3agiw/)
 
-Obiettivo: 
-Sperimentare diversi sistemi di NER su dataset di News
+Objective: 
+Experiment several NER systems on news sites
 
 Input: 
-insieme pagine da siti di news (da Common Crawl)
+List of news sites
 
 Output:
-pagine annotate
+Entities found on each analyzed page and their type (Organization, Person, Location)
 
-Strumenti:
+Libraries used:
 AlchemyAPI, Apache OpenNLP, StanfordNLP
