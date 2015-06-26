@@ -5,10 +5,11 @@ Objective:
 Experiment several NER systems on news sites
 
 Input: 
-List of news sites
+- List of news sites
 
 Output:
-Entities found on each analyzed page and their type (Organization, Person, Location)
+- Entities found on each analyzed page and their type (Organization, Person, Location)
+- Some analysis on the output with Hadoop MapReduce including apriori algorithm
 
 Libraries used:
 AlchemyAPI, Apache OpenNLP, StanfordNLP
