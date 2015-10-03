@@ -13,3 +13,5 @@ Output:
 
 Libraries used:
 AlchemyAPI, Apache OpenNLP, StanfordNLP
+
+Italian presentation: https://www.dropbox.com/s/j52hb4o1qsqv3li/ner-presentazione.pdf?dl=0
